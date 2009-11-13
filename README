@@ -51,10 +51,11 @@ There are two modes of operation.
 === Installation ===
 
 1. setup database.yml
-
 2. rake db:migrate
+3. rake db:seed
 
-3. Then login as :
+
+Then login as :
 
 email: "admin@localhost.com"
 password: "welcome"
