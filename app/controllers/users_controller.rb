@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   end
   
   def show
-    @user = current_user
+    @user = User.find(params[:id])
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @user }
@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   end
   
   def edit
-    @user = current_user
+    @user = User.find(params[:id])
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @user }
@@ -25,12 +25,11 @@ class UsersController < ApplicationController
   # PUT /admin/users/1
   # PUT /admin/users/1.xml
   def update
-    @user = current_user
-    params[:user][:admin] = false
+    @user = User.find(params[:id])
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        flash[:success] = 'Your profile was successfully updated.'
-        format.html { redirect_to(edit_user_path(@user)) }
+        flash[:success] = 'User was successfully updated.'
+        format.html { redirect_to(users_path) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
