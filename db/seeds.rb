@@ -122,6 +122,12 @@ Setting.create(
       :value => "/etc/init.d/openvpn stop", 
       :description => "Command to Stop OpenVPN. Default: /etc/init.d/openvpn stop", 
       :vpn_only => true},
-  ]
-  
+  ]  
 )
+
+User.create(:name => "admin", 
+  :email => "root@localhost.com", 
+  :password => "welcome", 
+  :password_confirmation => "welcome" 
+)
+

@@ -39,16 +39,23 @@ There are two modes of operation.
 - you need to load the 'vars' variables into the settings of the application.
 
 
-=== Gems I use: ===
+=== Gems I use, or will use ===
 
-- config.gem "formtastic"
-- config.gem "thoughtbot-clearance"
+- "formtastic"
+- "thoughtbot-clearance"
+- "thoughtbot-factory_girl"
+- rspec
+- cucumber 
+
 
 === Installation ===
 
-rake db:migrate
+1. setup database.yml
 
-Then login as :
+2. rake db:migrate
+
+3. Then login as :
+
 email: "admin@localhost.com"
 password: "welcome"
 
