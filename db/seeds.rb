@@ -126,7 +126,7 @@ Setting.create(
 )
 
 User.create(:name => "admin", 
-  :email => "root@localhost.com", 
+  :email => "admin@localhost.com", 
   :password => "welcome", 
   :password_confirmation => "welcome" 
 )
