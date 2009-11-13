@@ -1,0 +1,38 @@
+<h3><%= @title = "Showing VPN client: #{@client.name}" %></h3>
+
+<table id="gradient-style">
+  
+    <strong>Name:</strong> 
+    <pre><%= @client.name %></pre>
+    <br />
+    
+    <strong>Email:</strong>
+    <pre><%= @client.email %></pre>
+    <br />
+    
+    <strong>Last Connect:</strong>
+    <pre>--</pre>
+    <br />
+    
+    <strong>Key Content:</strong>
+    <pre><%= @client.vpn_key %></pre>
+    <br />
+    
+    <strong>Crt Content:</strong>
+    <pre><%= @client.vpn_crt %></pre>
+    <br />
+    
+    <strong>Csr Content:</strong>
+    <pre><%= @client.vpn_csr %></pre>
+    <br />
+    
+    <strong>Notes:</strong>
+    <pre><%= @client.notes %></pre>
+    <br />
+    
+</table>
+
+
+<%= link_to 'Edit', edit_client_path(@client) %> |
+<%= link_to 'Back', clients_path %>
+

@@ -1,0 +1,28 @@
+<h3><%= @title = "List of VPN clients" %></h3>
+
+<table id="gradient-style">
+  <tr>
+    <td>Name</td>
+    <td>Email</td>
+    <td>Edit</td>
+    <td>Revoke</td>
+  </tr>
+
+  <% @clients.each do |client| %>
+  <tr>
+    <td><%= link_to client.name, client %></td>
+    <td><%= client.email %></td>
+    <td><%= link_to 'Edit', edit_client_path(client) %></td>
+    <td><%= link_to 'Revoke', client, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+  <% end %>
+</table>
+
+<br />
+
+<p>
+  <%= link_to 'New Client', new_client_path %>
+</p>
+<p>
+  <%= link_to "Migrate from system", installed_clients_path %>
+</p>

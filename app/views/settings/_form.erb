@@ -1,0 +1,28 @@
+<fieldset>
+  <legend>Required Fields</legend>
+  <table>
+    <tr>
+  	  <td><%= f.label :var, "Name" %> </td>
+      <td><%= f.text_field :var, :size => 24 %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :value, "Value" %></td>
+      <td><%= f.text_field :value, :size => 60 %></td>
+    </tr>
+    </table>
+</fieldset>
+  
+<fieldset>
+  <legend>Optional</legend>
+  <table>
+    <tr>
+  	  <td><%= f.label :vpn_only, "VPN setting" %> </td>
+      <td><%= f.check_box :vpn_only %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :description %> </td>
+      <td><%= f.text_area :description, :rows => 12, :rows => 3 %></td>
+    </tr>
+  </table>
+  
+</fieldset>

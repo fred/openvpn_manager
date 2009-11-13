@@ -1,0 +1,11 @@
+<h3>Generate new VPN User</h3>
+
+<% form_for(@installed_client, :url => {:action => "create"}) do |f| %>
+
+  <p>
+    Name: <%= f.text_field 'name' %> *
+  </p>
+  <p>
+    <%= f.submit 'Generate' %>
+  </p>
+<% end %>

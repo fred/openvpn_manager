@@ -1,0 +1,27 @@
+
+<table id="gradient-style">
+  
+    <strong>Name:</strong> 
+    <pre><%= @installed_client.name %></pre>
+    <br />
+    
+    <strong>IP:</strong>
+    <pre><%= @installed_client.vpn_ip %></pre>
+    <br />
+    
+    <strong>Last Connect:</strong>
+    <pre><%= @installed_client.vpn_ip %></pre>
+    <br />
+    
+    <strong>Key:</strong>
+    <pre><%= @installed_client.vpn_key %></pre>
+    <br />
+    
+    <strong>Crt:</strong>
+    <pre><%= @installed_client.vpn_crt %></pre>
+    <br />
+    
+</table>
+
+
+<%= link_to 'Back', installed_clients_path %>

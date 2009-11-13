@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>OpenVPN Administrator - <%= @title %></title>	
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <%= stylesheet_link_tag "base" %>
+  <%= stylesheet_link_tag "scaffold" %>
+  <%= stylesheet_link_tag "forms" %>
+  <%= stylesheet_link_tag "style" %>
+  <%= stylesheet_link_tag "table" %>
+  <%= stylesheet_link_tag "pagination" %>
+  <%= stylesheet_link_tag "formtastic" %>
+  <%= stylesheet_link_tag "formtastic_changes" %>
+</head>
+
+<body>
+  <div id="wrap">
+
+    <div id="header">
+      <h1>OpenVPN Administration</h1>
+    </div>
+
+    <div id="menu">
+      <ul>
+        <% if current_user %>
+          <li><%= link_to "Users", users_path %></li>
+          <li><%= link_to "Clients", installed_clients_path %></li>
+          <li><%= link_to "Settings", settings_path %></li>
+          <li><%= link_to "logout", new_session_path %></li>
+        <% else %>
+          <li><%= link_to "login", new_session_path %></li>
+        <% end %>
+      </ul>
+    </div>
+
+    <div id="content">
+      
+      <div id="left">
+        
+        <% if flash[:error] %>
+          <div class="error">
+            Error: <%= flash[:error] %>
+          </div>
+        <% end %>
+
+        <% if flash[:notice] %>
+          <div class="notice">
+            Notice: <%= flash[:notice] %>
+          </div>
+        <% end %>
+
+        <% if flash[:success] %>
+          <div class="success">
+            Success: <%= flash[:success] %>
+          </div>
+        <% end %>
+    	  
+        <%= yield %>
+      </div>
+
+      <div style="clear:both;"> </div>
+
+    </div>
+
+    <div id="footer">
+      &copy; Copyright by <a href="#">Your Website title or URL Here</a> | Design by <a href="http://www.rubber-ducks.org">Rubber ducks</a>
+    </div>
+
+  </div>
+</body>
+</html>

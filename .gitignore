@@ -1,0 +1,17 @@
+log/*.log
+tmp/**/*
+.DS_Store
+doc/api
+doc/app
+coverage
+db/*.sqlite3
+db/*.lzma
+db/*.sql
+*.swp
+public/system
+*~
+public/javascripts/all.js
+config/database.yml
+config/deploy.rb
+Capfile
+

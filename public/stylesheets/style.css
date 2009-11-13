@@ -1,0 +1,126 @@
+* {
+    padding: 0;
+    margin: 0;
+} 
+
+body {
+  background: #497CB5;
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 13px;
+  padding: 0;
+  margin: 0;
+  color: #555;
+  line-height: 17px;
+}
+
+img { border: none; }
+a { color: #A6C7DA; color: #497cb5; text-decoration: none;}
+a:hover { text-decoration: none; color: #444; }
+h3 { border-bottom: 1px dotted #aaa; color: #555; padding-bottom: 4px; margin: 15px 0 20px 0; font-weight: 100; font-size: 22px; letter-spacing: -1px;}
+h3 a { text-decoration: none; font-size: 22px; letter-spacing: -1px; }
+h3 a:hover { color: #999; }
+
+#wrap {
+  width: 800px;
+  margin: 20px auto;
+}
+
+#header {
+  background: #497CB5 url(/images/header.jpg) no-repeat;
+  font-family:"Century Gothic", "Trebuchet MS", "Arial Narrow", Arial, sans-serif;
+  height: 80px;
+}
+#header h1 {
+  font-size: 35px;
+  font-weight: 100;
+  letter-spacing: -3px;
+  padding: 30px 0 0 33px;
+  text-align: left;
+}
+#header h1 a {
+  color: #A6C7DA;
+  text-decoration: none;
+}
+#header h1 a:hover {
+  color: #111;
+  text-decoration: none;
+}
+#header h2 {
+  font-size: 13px;
+  color: #666;
+  padding: 4px 0 0 33px;
+  text-align: left;
+  font-weight: 100;
+}
+
+#menu {
+  background: #497CB5 url(/images/menu.jpg) no-repeat;
+  height: 30px;
+  line-height: 30px;
+  padding-left: 30px;
+}
+#menu li {
+  float:left;
+  list-style-type:none;
+}
+#menu li a {
+  display:block;
+  padding:0 10px;
+  text-decoration:none;
+  color: #fff;
+}
+#menu li a:hover {
+  color:#fff;
+  text-decoration:none;
+  background: #FFB518 url(/images/menuover.jpg) repeat-x;
+}
+
+#content { 
+  padding: 0 20px;
+  background: #497CB5 url(/images/content.jpg) repeat-y;
+}
+
+#left {
+  margin: 4px;
+  padding: 4px 1px;
+  /*width: 520px;*/
+  width: 98%;
+  float: left;
+  font-size: 1.1em;
+  text-align: justify;
+}
+
+#left p {
+  font-size: 1.05em;
+  padding: 5px 0px;
+}
+#left h3 { border-bottom: 1px dotted #aaa; }
+
+#right{
+padding: 20px 0;
+width: 180px;
+float: right;
+}
+#right h3 { font-size: 14px; border: none; padding: 0 0 0 10px; margin: 0; color: #fff; background: #A6C7DA url(/images/sidebarh2.jpg) no-repeat; height: 30px; line-height: 30px; }
+#right ul { list-style-type: none; padding: 10px 0 20px 10px; }
+#right ul li { padding: 2px 0 3px 0; }
+#right ul li a { color: #A6C7DA; font-weight: 100; display: block; text-decoration: none; font-size: 14px;}
+#right ul li a:hover { color : #999; }
+
+#footer {
+font-size: 10px;
+color: #ccc;
+text-align: center;
+height: 70px;
+line-height: 70px;
+background: #497CB5 url(/images/footer.jpg) no-repeat;
+margin: 0 0 20px 0;
+}
+#footer a { 
+color: #ccc;
+text-decoration: none;
+}
+#footer a:hover {
+color: #aaa; 
+text-decoration: underline; 
+}

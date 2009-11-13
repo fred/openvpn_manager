@@ -1,0 +1,27 @@
+<h3><%= @title %></h3>
+
+<table id="gradient-style">
+  <tr>
+    <td>Name</td>
+    <td>CRT</td>
+    <td>KEY</td>
+    <td>CSR</td>
+    <td>IP</td>
+    <td> </td>
+    <td> </td>
+  </tr>
+
+  <% @installed_clients.each do |installed_client| %>
+  <tr>
+    <td><%= installed_client.name %></td>
+    <td><%= link_to("#{installed_client.name}.crt", :action => :download, :file => installed_client.vpn_crt_file) %></td>
+    <td><%= link_to("#{installed_client.name}.key", :action => :download, :file => installed_client.vpn_key_file) %></td>
+    <td><%= link_to("#{installed_client.name}.csr", :action => :download, :file => installed_client.vpn_csr_file) %></td>
+    <td> -- </td>
+    <td><%= link_to 'Show', :action => "show", :id => installed_client.name %></td>
+    <td><%= link_to 'Revoke', {:action => :destroy, :id => installed_client.name}, :confirm => 'Are you sure you want to revoke this key? This will terminate the user access to the VPN.', :method => :delete %></td>
+  </tr>
+  <% end %>
+</table>
+
+<%= link_to 'Create New', new_installed_client_path %>

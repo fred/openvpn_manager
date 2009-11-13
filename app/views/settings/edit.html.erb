@@ -1,0 +1,13 @@
+<h3><%= @title = "Editing setting #{@setting.var}" %></h3>
+
+<% form_for(@setting) do |f| %>
+  <%= f.error_messages %>
+  <%= render :partial => "form", :locals => {:f => f} %>
+  <p>
+    <%= f.submit 'Save' %>
+  </p>
+<% end %>
+
+
+<%= link_to 'Show', @setting %> |
+<%= link_to 'Back', settings_path %>

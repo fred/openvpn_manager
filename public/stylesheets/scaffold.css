@@ -1,0 +1,62 @@
+/* Errors */
+
+#flash_notice, #flash_error {
+  padding: 5px 8px;
+  margin: 10px 0;
+}
+
+#flash_notice {
+  background-color: #CFC;
+  border: solid 1px #6C6;
+}
+
+#flash_error {
+  background-color: #FCC;
+  border: solid 1px #C66;
+}
+
+.fieldWithErrors {
+  display: inline;
+	border-color: red;
+}
+
+.error  { 
+	background: #FBE3E4; 
+	color: #8a1f11; 
+	border-color: #FBC2C4; 
+}
+
+#errorExplanation {
+  width: 400px;
+  border: 2px solid #CF0000;
+  padding: 0px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #FBE3E4;
+}
+
+#errorExplanation h2 {
+  text-align: left;
+  padding: 5px 5px 5px 15px;
+  font-size: 1.3em;
+  margin: 0;
+  background-color: #c00;
+  color: #fff;
+}
+
+#errorExplanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 8px;
+	font-size: 1.4em;
+}
+
+#errorExplanation ul {
+  margin: 2px 24px;
+}
+
+#errorExplanation ul li {
+  font-size: 1.2em;
+  list-style: disc;
+	color: #222;
+}

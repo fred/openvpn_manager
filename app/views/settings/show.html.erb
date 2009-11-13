@@ -1,0 +1,31 @@
+<br />
+<p> Name: </p>
+<pre> <%= @setting.var %> </pre>
+
+<br />
+<p> Value: </p>
+<pre> <%= @setting.value %> </pre>
+
+<br />
+<p> Description: </p>
+<pre> <%= @setting.description %> </pre>
+
+<br />
+<p> VPN only: </p>
+<pre> <%= boolean_to_word @setting.vpn_only %> </pre>
+
+<br />
+<p> Updated at: </p>
+<pre> <%= @setting.updated_at.to_s(:long) %> </pre>
+
+<br />
+<p> Created at: </p>
+<pre> <%= @setting.created_at.to_s(:long) %> </pre>
+
+
+<br />
+
+<p>
+<%= link_to 'Edit', edit_setting_path(@setting) %> |
+<%= link_to 'Back', settings_path %>
+</p>

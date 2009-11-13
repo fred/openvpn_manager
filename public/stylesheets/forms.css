@@ -1,0 +1,366 @@
+/* -------------------------------------------------------------- 
+   
+   forms.css
+   * Sets up some default styling for forms
+   * Gives you classes to enhance your forms
+   
+   Usage:
+   * For text fields, use class .title or .text
+   
+-------------------------------------------------------------- */
+
+/* Admin Forms */
+
+.span-12 {
+	float: left;
+	margin: 5px 0;
+	padding: 5px 0;
+	width: 98%;
+}
+
+.small_tip {
+	font-size: 1.0em;
+	font-style: italic;
+	color: #ccc;
+	display: block;
+}
+.label_field {
+	color: #ccc;
+	padding: 4px;
+	margin-bottom: 2px;
+	clear: both;
+	float: left;
+	width: 96%;
+}
+.label_field input,
+.label_field select {
+	width: 320px;
+	padding: 5px;
+	color: #333;
+}
+.label_field label {
+	font-weight: normal;
+	font-size: 1.2em;
+	color: #ccc; 
+	float: left;
+	width: 90%;
+}
+.value {
+	font-size: 1.2em;
+	color: #eee;
+	float: left;
+	margin-left: 10px;
+}
+
+fieldset    { 
+	padding: 1.0em; 
+	margin: 0 0 2em 0; 
+	border: 1px solid #aaa; 
+	width: 94%;
+}
+fieldset label {
+	font-size: 1.1em;
+}
+
+legend  { font-size:1.6em; color: #444;}
+
+
+/* Form fields
+-------------------------------------------------------------- */
+
+input, select {
+	padding: 4px;
+	font-size: 1.1em;
+}
+input, input.text, input.title,
+textarea, select {
+  margin: 0.2em 0 0.4em 0;
+  border:1px solid #888;
+}
+
+input.text:focus, input.title:focus,
+textarea:focus, select:focus, input:focus {
+  border:1px solid #333;
+}
+
+input.text, 
+input.title { padding:5px; }
+input.title { font-size:1.5em; }
+textarea  { 
+	padding:6px;
+	border: 1px solid #888;
+}
+
+input.inline {display: inline; clear:none;}
+
+.button-to, .button-to div {display: inline;}
+
+
+pre { 
+  padding: 4px;
+  page-break-inside: avoid; 
+  max-width:98% !important; 
+  overflow-x: auto; 
+/* Use horizontal scroller if needed; for Firefox 2, not needed in Firefox 3 */ 
+  white-space: pre-wrap; 
+  /* css-3 */ 
+  white-space: -moz-pre-wrap !important; 
+  /* Mozilla, since 1999 */ white-space: -pre-wrap; 
+  /* Opera 4-6 */ 
+  white-space: -o-pre-wrap; 
+  /* Opera 7 */ 
+  /* width: 99%; */ 
+  word-wrap: break-word; 
+  /* Internet Explorer 5.5+ */
+  font-size: 1.05em;
+}
+
+/* Success, notice and error boxes
+-------------------------------------------------------------- */
+
+.error,
+.notice, 
+.success  { 
+	font-size: 1.2em;
+	padding: .8em; 
+	margin-bottom: 1em; 
+	border: 2px solid #ddd;
+}
+
+.error      { background: #FBE3E4; color: #8a1f11; border-color: #FBC2C4; }
+.notice     { background: #FFF6BF; color: #514721; border-color: #FFD324; }
+.success    { background: #E6EFC2; color: #264409; border-color: #C6D880; }
+.error a    { color: #8a1f11; }
+.notice a   { color: #514721; }
+.success a  { color: #264409; }
+
+
+#columnarForm fieldset
+{
+	float: left;
+	display: block;
+	width: 17em;
+	margin: 0 1em 1em 0;
+	padding: 0 1em 1em 1em;
+}
+
+#columnarForm fieldset.radio
+{
+	width: 15em;
+	margin: 1em 0 2em 0;
+}
+
+#columnarForm fieldset.radio input
+{
+	clear: both;
+	float: left;
+	width: auto;
+}
+
+#columnarForm fieldset.radio label
+{
+	font-weight: normal;
+}
+
+#columnarForm input
+{
+	/*display: block;*/
+	width: 15em;
+}
+
+#columnarForm label
+{
+	display: block;
+	margin-bottom: 0.2em;
+	font-weight: bold;
+}
+
+#columnarForm label.first
+{
+	padding-top: 1em;
+}
+
+#columnarForm select
+{
+	display: block;
+}
+
+#horizontalForm fieldset
+{
+	display: block;
+	margin: 0 0 3em 0;
+	padding: 0 1em 1em 1em;
+}
+
+#horizontalForm fieldset.radio
+{
+	margin: 1em 0 2em 0;
+}
+
+#horizontalForm fieldset.radio input
+{
+	clear: both;
+	float: left;
+	width: auto;
+}
+
+#horizontalForm fieldset.radio label
+{
+	font-weight: normal;
+}
+
+#horizontalForm input
+{
+	display: block;
+	width: 15em;
+}
+
+#horizontalForm input.submit
+{
+	clear: both;
+}
+
+#horizontalForm label
+{
+	float: left;
+	display: block;
+	margin: 1em 1em 0 0;
+	font-weight: bold;
+}
+
+#horizontalForm select
+{
+	display: block;
+}
+
+#marginForm fieldset
+{
+	display: block;
+	margin: 0 0 1em 0;
+	border: 0 solid #FFFFFF;
+	border-top: 1px solid #000000;
+	padding: 0 1em 1em 1em;
+}
+
+#marginForm fieldset.radio
+{
+	margin: 0 0 0 -1em;
+	border: 0 solid #FFFFFF;
+}
+
+#marginForm fieldset.radio input
+{
+	position: static;
+	clear: both;
+	float: left;
+}
+
+#marginForm fieldset.radio label
+{
+	position: relative;
+	top: -1.25em;
+	display: inline;
+	width: auto;
+	margin: 0 0 0 8em;
+	font-weight: bold;
+	font-weight: normal;
+}
+
+#marginForm fieldset.radio legend
+{
+	float: left;
+	font-weight: bold;
+}
+
+#marginForm input
+{
+	position: relative;
+	top: -1.4em;
+	left: 8em;
+	display: block;
+}
+
+#marginForm input.submit
+{
+	clear: both;
+	top: 0;
+}
+
+#marginForm label
+{
+	clear: both;
+	float: left;
+	display: block;
+	width: 8em;
+	margin-top: -1em;
+	font-weight: bold;
+}
+
+#marginForm label.first
+{
+	margin-top: 1em;
+}
+
+#marginForm select
+{
+	position: relative;
+	top: -1.4em;
+	left: 8em;
+	display: block;
+}
+
+#verticalForm fieldset
+{
+	display: block;
+	width: 17em;
+	margin: 0 0 3em 0;
+	padding: 0 1em 1em 1em;
+}
+
+#verticalForm fieldset.radio
+{
+	width: 15em;
+	margin: 1em 0 2em 0;
+}
+
+#verticalForm fieldset.radio input
+{
+	clear: both;
+	float: left;
+	width: auto;
+}
+
+#verticalForm fieldset.radio label
+{
+	font-weight: normal;
+}
+
+#verticalForm input
+{
+	display: block;
+	width: 15em;
+}
+
+#verticalForm label
+{
+	display: block;
+	margin-bottom: 1em;
+	font-weight: bold;
+}
+
+#verticalForm label.first
+{
+	padding-top: 1em;
+}
+
+#verticalForm select
+{
+	display: block;
+}
+
+
+#columnarForm input.hidden {
+	display: none;
+	border: none;
+}
+

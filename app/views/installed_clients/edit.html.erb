@@ -1,0 +1,12 @@
+<h1>Editing installed_client</h1>
+
+<% form_for(@installed_client) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @installed_client %> |
+<%= link_to 'Back', installed_clients_path %>

@@ -1,0 +1,62 @@
+/* === FLASH MESSAGES === */
+div#flash-notice {
+	
+}
+
+div#flash-warning {
+	
+}
+
+div#flash-error {
+	
+}
+
+/* === ERROR MESSAGES === */
+div#errorExplanation {
+	
+}
+
+div#errorExplanation h2 {
+	
+}
+
+div#errorExplanation p {
+	
+}
+
+div#errorExplanation ul {
+	
+}
+
+div#errorExplanation ul li {
+	
+}
+
+/* === FORMS === */
+div.fieldWithErrors {
+	color: red;
+}
+
+div.fieldWithErrors label {
+	font-size: 1.2em;
+	color: red;	
+	font-weight: bold;
+}
+
+div.fieldWithErrors input, 
+div.fieldWithErrors select, 
+div.fieldWithErrors textarea {
+	padding: 5px;
+	border: 2px solid red;
+	border-color: red !important;
+}
+
+div.if_has_error div.fieldWithErrors input {
+	border: 2px solid red !important;
+}
+
+div.if_has_error div.fieldWithErrors {
+	border: 2px solid red;
+	height: 30px;
+	float: left;
+}
