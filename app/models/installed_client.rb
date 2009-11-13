@@ -2,7 +2,13 @@ class InstalledClient
   
   attr_accessor :vpn_crt, :vpn_csr, :vpn_key, :vpn_ip, :name, :vpn_crt_file, :vpn_csr_file, :vpn_key_file
   
-  FETCH_FOLDER = "/Users/fred/Servers/fredz2/etc/openvpn/privnet"
+  def self.fetch_folder
+    Setting.get("KEY_DIR")
+  end
+
+  def self.backup_folder
+    Setting.get("KEY_DIR_BAK")
+  end
   
   # VPN user name
   def name
@@ -79,7 +85,7 @@ class InstalledClient
   
   def self.all
     # only clients have a .csr file
-    keys = Dir.glob("#{InstalledClient::FETCH_FOLDER}/*.csr")
+    keys = Dir.glob("#{self.fetch_folder}/*.csr")
     users = keys.map {|t| t.split("/").last.gsub(".csr","")}
     installed_clients = []
     users.each do |t| 
@@ -90,33 +96,35 @@ class InstalledClient
   end
   
   def self.find(name)
-    keys = Dir.glob("#{InstalledClient::FETCH_FOLDER}/#{name}.crt")
+    keys = Dir.glob("#{self.fetch_folder}/#{name}.crt")
     if keys.empty?
       return nil
     else
       name = keys[0].split("/").last.gsub(".crt","")
       record = InstalledClient.new
       record.name = name.to_s
-      record.vpn_key_file  = "#{FETCH_FOLDER}/#{name}.key"
-      record.vpn_crt_file  = "#{FETCH_FOLDER}/#{name}.crt"
-      record.vpn_csr_file  = "#{FETCH_FOLDER}/#{name}.csr"
-      record.vpn_key  = File.read("#{FETCH_FOLDER}/#{name}.key") if File.exist?(record.vpn_key_file)
-      record.vpn_crt  = File.read("#{FETCH_FOLDER}/#{name}.crt") if File.exist?(record.vpn_crt_file)
-      record.vpn_csr  = File.read("#{FETCH_FOLDER}/#{name}.csr") if File.exist?(record.vpn_csr_file)
+      record.vpn_key_file  = "#{self.fetch_folder}/#{name}.key"
+      record.vpn_crt_file  = "#{self.fetch_folder}/#{name}.crt"
+      record.vpn_csr_file  = "#{self.fetch_folder}/#{name}.csr"
+      record.vpn_key  = File.read("#{self.fetch_folder}/#{name}.key") if File.exist?(record.vpn_key_file)
+      record.vpn_crt  = File.read("#{self.fetch_folder}/#{name}.crt") if File.exist?(record.vpn_crt_file)
+      record.vpn_csr  = File.read("#{self.fetch_folder}/#{name}.csr") if File.exist?(record.vpn_csr_file)
       record
     end
   end
   
+  # TODO
   def save
     if find(self.name)
       self.errors = {:name => "name is already used"}
       raise "Name already exists"
     else
       true
-      # generate keys command
+      # generate keys command  # TODO
     end
   end
   
+  # TODO
   # Revoke user certificates
   # read: http://openvpn.net/index.php/open-source/documentation/howto.html#revoke
   def destroy
