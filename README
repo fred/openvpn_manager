@@ -38,12 +38,11 @@ There are two modes of operation.
 - You need to know where is the 'easyrsa' folder (included in openvpn)
 - you need to load the 'vars' variables into the settings of the application.
 
-
 === Gems I use, or will use ===
 
-- "formtastic"
-- "thoughtbot-clearance"
-- "thoughtbot-factory_girl"
+- formtastic
+- houghtbot-clearance
+- thoughtbot-factory_girl
 - rspec
 - cucumber 
 
@@ -51,13 +50,13 @@ There are two modes of operation.
 === Installation ===
 
 1. setup database.yml
-2. rake db:migrate
-3. rake db:seed
+2. sudo rake gems:install
+3. rake db:migrate
+4. rake db:seed
 
 
 Then login as :
 
 email: "admin@localhost.com"
 password: "welcome"
-
 
