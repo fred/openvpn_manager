@@ -122,6 +122,11 @@ Setting.create(
       :value => "/etc/init.d/openvpn stop", 
       :description => "Command to Stop OpenVPN. Default: /etc/init.d/openvpn stop", 
       :vpn_only => true},
+      
+    { :var => "HTTPS_ONLY", 
+      :value => 0, 
+      :description => "Set 1, if you prefer to use HTTPS only", 
+      :vpn_only => false},
   ]  
 )
 
