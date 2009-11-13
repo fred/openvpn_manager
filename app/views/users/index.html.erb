@@ -1,1 +1,29 @@
-<h3><%= @title %></h3>
+<h3><%= @title = "List of Admin users" %></h3>
+
+<table id="gradient-style">
+  <tr>
+    <td>Name</td>
+    <td>Email</td>
+    <td>Updated at</td>
+    <td>Created at</td>
+    <td></td>
+    <td></td>
+  </tr>
+
+  <% @users.each do |user| %>
+  <tr>
+    <td><%= user.name %></td>
+    <td><%= user.email %></td>
+    <td><%= user.updated_at.to_s(:short) %></td>
+    <td><%= user.updated_at.to_s(:short) %></td>
+    <td><%= link_to 'Edit', edit_user_path(user) %></td>
+    <td><%= link_to 'Del', user, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+  <% end %>
+</table>
+
+<br />
+
+<p>
+  <%= link_to 'New user', new_user_path %>
+</p>

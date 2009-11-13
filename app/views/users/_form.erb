@@ -1,0 +1,21 @@
+<fieldset>
+  <legend>Required Fields</legend>
+  <table>
+    <tr>
+  	  <td><%= f.label :name, "Name" %> </td>
+      <td><%= f.text_field :name, :size => 24 %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :email, "Email" %></td>
+      <td><%= f.text_field :email, :size => 24 %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :password, "Password" %></td>
+      <td><%= f.text_field :password, :size => 24 %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :password_confirmation, "Password Confirmation" %></td>
+      <td><%= f.text_field :password_confirmation, :size => 24 %></td>
+    </tr>
+    </table>
+</fieldset>
