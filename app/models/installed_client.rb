@@ -3,11 +3,13 @@ class InstalledClient
   attr_accessor :vpn_crt, :vpn_csr, :vpn_key, :vpn_ip, :name, :vpn_crt_file, :vpn_csr_file, :vpn_key_file
   
   def self.fetch_folder
-    Setting.get("KEY_DIR")
+    @key_dir ||= Setting.get("KEY_DIR")
+    @key_dir
   end
 
   def self.backup_folder
-    Setting.get("KEY_DIR_BAK")
+    @key_dir_bak ||= Setting.get("KEY_DIR_BAK")
+    @key_dir_bak
   end
   
   # VPN user name
