@@ -17,8 +17,6 @@ class ApplicationController < ActionController::Base
     end
   end
   
-  private
-  
   def ssl_required?
     Setting.get("HTTPS_ONLY") == "1"
   end
