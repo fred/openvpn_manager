@@ -96,7 +96,7 @@ class InstalledClient
   def self.get_status
     # For now only linux to start with
     if RUBY_PLATFORM.match(/linux/)
-      get_linux_status
+      InstalledClient.get_linux_status
     else
       false
     end
@@ -104,7 +104,7 @@ class InstalledClient
   
   
   # Get the status of the process using /proc fs
-  def get_linux_status
+  def self.get_linux_status
     file = Setting.get("STATUS_FILE")
     unless File.exists?(file)
       logger.debug("OpenVPN: no PID file found")
