@@ -84,6 +84,64 @@ class InstalledClient
     @errors = errors
   end
   
+  def self.openvpn_status
+    return false if 
+    pid = Setting.get("PIF_FILE")
+    if file.exists?(pid)
+      content = File.read(file)
+    end
+  end
+  
+  # Tdod: implemet methods for BSD, OSX and other OS.
+  def self.get_status
+    # For now only linux to start with
+    if RUBY_PLATFORM.match(/linux/)
+      get_linux_status
+    else
+      false
+    end
+  end
+  
+  
+  # Get the status of the process using /proc fs
+  def get_linux_status
+    file = Setting.get("STATUS_FILE")
+    unless File.exists?(file)
+      logger.debug("OpenVPN: no PID file found")
+      return false
+    end
+    pid = File.read(file).chomp
+    proc_file = "/proc/#{pid}/status"
+    if File.exists?(proc_file)
+      running = true 
+      logger.debug("OpenVPN: process is running with pid: #{pid}")
+    else
+      running = false
+      logger.debug("OpenVPN: no process found with pid: #{pid}")
+    end
+    running
+  end
+  
+  def self.client_ips
+    ipp_file = Setting.get("IPP_FILE")
+    return nil unless File.exists?(ipp_file)
+    tmp = File.read(ipp_file).split("\n")
+    ips = []
+    tmp.each do |t|
+      a = t.split(",")
+      ips << {:name => a[0], :ip => a[1]}
+    end
+    ips
+  end
+  
+  def get_vpn_ip
+    ip = InstalledClient.client_ips.find {|t| t[:name]==self.name}
+    if ip
+      ip[:ip]
+    else
+      nil
+    end
+  end
   
   def self.all
     # only clients have a .csr file
@@ -92,6 +150,9 @@ class InstalledClient
     installed_clients = []
     users.each do |t| 
       record = InstalledClient.find(t)
+      if ip=InstalledClient.client_ips.find {|t| t[:name]==record.name}
+        record.vpn_ip = ip[:ip]
+      end
       installed_clients << record
     end
     installed_clients
@@ -111,6 +172,7 @@ class InstalledClient
       record.vpn_key  = File.read("#{self.fetch_folder}/#{name}.key") if File.exist?(record.vpn_key_file)
       record.vpn_crt  = File.read("#{self.fetch_folder}/#{name}.crt") if File.exist?(record.vpn_crt_file)
       record.vpn_csr  = File.read("#{self.fetch_folder}/#{name}.csr") if File.exist?(record.vpn_csr_file)
+      record.vpn_ip = record.get_vpn_ip
       record
     end
   end
