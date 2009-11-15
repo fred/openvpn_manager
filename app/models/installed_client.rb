@@ -107,17 +107,17 @@ class InstalledClient
   def self.get_linux_status
     file = Setting.get("STATUS_FILE")
     unless File.exists?(file)
-      logger.debug("OpenVPN: no PID file found")
+      OPENVPN_LOGGER.debug("OpenVPN: no PID file found")
       return false
     end
     pid = File.read(file).chomp
     proc_file = "/proc/#{pid}/status"
     if File.exists?(proc_file)
       running = true 
-      logger.debug("OpenVPN: process is running with pid: #{pid}")
+      OPENVPN_LOGGER.debug("OpenVPN: process is running with pid: #{pid}")
     else
       running = false
-      logger.debug("OpenVPN: no process found with pid: #{pid}")
+      OPENVPN_LOGGER.debug("OpenVPN: no process found with pid: #{pid}")
     end
     running
   end

@@ -1,0 +1,1 @@
+OPENVPN_LOGGER = Logger.new("#{RAILS_ROOT}/log/openvpn.log")
