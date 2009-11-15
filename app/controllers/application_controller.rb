@@ -9,6 +9,8 @@ class ApplicationController < ActionController::Base
   # Scrub sensitive parameters from your log
   filter_parameter_logging :password, :password_confirmation
   
+  before_filter :openvpn_status
+  
   def login_required
     unless current_user
       flash[:error] = "Login Required"
@@ -18,6 +20,11 @@ class ApplicationController < ActionController::Base
   
   def ssl_required?
     Setting.get("HTTPS_ONLY") == "1"
+  end
+  
+  def openvpn_status
+    # do restart command
+    @openvpn_running = InstalledClient.get_status
   end
   
 end
