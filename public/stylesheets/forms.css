@@ -87,6 +87,7 @@ input.text,
 input.title { padding:5px; }
 input.title { font-size:1.5em; }
 textarea  { 
+  font-size: 1.05em;
 	padding:6px;
 	border: 1px solid #888;
 }

@@ -127,6 +127,11 @@ Setting.create(
       :value => 0, 
       :description => "Set 1, if you prefer to use HTTPS only", 
       :vpn_only => false},
+    
+    { :var => "STATUS_LOG", 
+      :value => "/var/log/openvpn/openvpn-status.log", 
+      :description => "File that shows a short status, current connections, truncated and rewritten every minute, bytes sent and received by each user. Default: /var/log/openvpn/openvpn-status.log", 
+      :vpn_only => true},
   ]  
 )
 

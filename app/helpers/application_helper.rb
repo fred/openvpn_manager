@@ -2,6 +2,14 @@
 module ApplicationHelper
   
   
+  def openvpn_status
+    if @openvpn_running
+      "<span class='green'>OpenVPN is running</span>"
+    else
+      "<span class='red'>OpenVPN is not running</span>"
+    end
+  end
+  
   # returns a yes/no image small size
   def boolean_to_image_lock(bol)
     if bol && (bol == true)

@@ -2,8 +2,16 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :settings
 
   map.resources :users
+  
   map.resources :installed_clients, :collection => {:download => [:any]}
+  
   map.resources :clients, :collection => {:reload => [:any]}
+  
+  map.resources :openvpn, :collection => {
+    :restart => [:get],
+    :start => [:get],
+    :stop => [:put],
+  }
 
   # The priority is based upon order of creation: first created -> highest priority.
 

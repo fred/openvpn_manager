@@ -17,7 +17,7 @@
     <td><%= link_to("#{installed_client.name}.crt", :action => :download, :file => installed_client.vpn_crt_file) %></td>
     <td><%= link_to("#{installed_client.name}.key", :action => :download, :file => installed_client.vpn_key_file) %></td>
     <td><%= link_to("#{installed_client.name}.csr", :action => :download, :file => installed_client.vpn_csr_file) %></td>
-    <td> -- </td>
+    <td><%= installed_client.vpn_ip %> </td>
     <td><%= link_to 'Show', :action => "show", :id => installed_client.name %></td>
     <td><%= link_to 'Revoke', {:action => :destroy, :id => installed_client.name}, :confirm => 'Are you sure you want to revoke this key? This will terminate the user access to the VPN.', :method => :delete %></td>
   </tr>

@@ -124,3 +124,34 @@ text-decoration: none;
 color: #aaa; 
 text-decoration: underline; 
 }
+
+.action {
+  float: left;
+  padding: 4px;
+  margin: 8px;
+  border: 1px solid #ccc;
+  width: 29%;
+}
+
+.action img {
+  float: left;
+}
+.action .action_label {
+  font-weight:bold;
+  vertical-align: center;
+  text-align: center;
+  margin-top: 15%;
+  padding: 8px;
+  float: left;
+}
+.openvpn_status {
+  margin-right:40px;
+  float:right;
+  font-style: italic;
+}
+.openvpn_status .green {
+  color: green;
+}
+.openvpn_status .red {
+  color: red;
+}
