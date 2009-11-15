@@ -1,0 +1,31 @@
+<h3><%= @title = "OpenVPN Service Tools" %></h3>
+
+<h4>Status:</h4>
+
+<div class="action">
+  <% if @openvpn_running %>
+    <%= image_tag "icons/96/Ball-go.png" %>
+    <span class="action_label">Running</span>
+  <% else %>
+    <%= image_tag "icons/96/Ball-stop.png" %>
+    <span class="action_label">Shutdown</span>
+  <% end %>
+</div>
+
+<br clear="both"/>
+
+<h4>Actions:</h4>
+<div class="action">
+  <%= link_to image_tag("icons/96/Button-shutdown.png"), stop_openvpn_path, :method => :put %>
+  <span class="action_label">Stop</span>
+</div>
+
+<div class="action">
+  <%= link_to image_tag("icons/96/Button-go.png"), start_openvpn_path %>
+  <span class="action_label">Start</span>
+</div>
+
+<div class="action">
+  <%= link_to image_tag("icons/96/Button-reboot.png"), restart_openvpn_path %>
+  <span class="action_label">Restart</span>
+</div>
