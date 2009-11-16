@@ -105,7 +105,7 @@ class InstalledClient
   
   # Get the status of the process using /proc fs
   def self.get_linux_status
-    file = Setting.get("STATUS_FILE")
+    file = Setting.get("PID_FILE")
     unless File.exists?(file)
       OPENVPN_LOGGER.debug("OpenVPN: no PID file found")
       return false
