@@ -42,6 +42,46 @@ class Openvpn
     end
   end
   
+  # Set ENV[] for generating new openvpn certificate pairs
+  def self.set_env
+    Setting.all.each {|t| ENV["#{t.var}"]=t.value}
+  end
+  
+  # Check if all require variables are set.
+  def self.check_env
+    result = ENV["EASY_RSA"] && 
+    ENV["OPENSSL"] && 
+    ENV["PKCS11TOOL"] && 
+    ENV["GREP"] && 
+    ENV["KEY_CONFIG"] && 
+    ENV["KEY_DIR"] && 
+    ENV["PKCS11_MODULE_PATH"] && 
+    ENV["PKCS11_PIN"] && 
+    ENV["KEY_SIZE"] && 
+    ENV["CA_EXPIRE"] && 
+    ENV["KEY_EXPIRE"] && 
+    ENV["KEY_COUNTRY"] && 
+    ENV["KEY_PROVINCE"] && 
+    ENV["KEY_CITY"] && 
+    ENV["KEY_ORG"] && 
+    ENV["KEY_EMAIL"]
+    if result
+      true
+    else
+      false
+    end
+  end
+  
+  def self.new_client(name)
+    Openvpn.set_env
+    return false unless Openvpn.check_env
+    easy_rsa = Setting.get("EASY_RSA")
+    pkitool = "#{easy_rsa}/pkitool"
+    return false unless File.exist?(pkitool)
+    
+    system("#{pkitool} #{name}")
+  end
+  
   
   # Get the status of the process using /proc fs
   def self.get_linux_status
