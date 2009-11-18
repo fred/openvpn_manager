@@ -3,10 +3,10 @@ module ApplicationHelper
   
   
   def openvpn_status
-    if @openvpn_running
-      "<span class='green'>OpenVPN is running</span>"
+    if Openvpn.status
+      "<span class='green'>OpenVPN is running. pid: #{Openvpn.pid}</span>"
     else
-      "<span class='red'>OpenVPN is not running</span>"
+      "<span class='red'>OpenVPN is not running </span>"
     end
   end
   
