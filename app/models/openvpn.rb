@@ -21,19 +21,17 @@ class Openvpn
     result
   end
     
-  def self.status
-    return false if 
-    pid = Setting.get("PIF_FILE")
-    if file.exists?(pid)
-      content = File.read(file)
-    end
+  def self.pid
+    return nil if pid = Setting.get("PIF_FILE")
+    File.read(file) if file.exists?(pid)
   end
   
+  
   # Tdod: implemet methods for BSD, OSX and other OS.
-  def self.get_status
+  def self.status
     # For now only linux to start with
     if RUBY_PLATFORM.match(/linux/)
-      InstalledClient.get_linux_status
+      Openvpn.get_linux_status
     else
       false
     end
@@ -42,12 +40,10 @@ class Openvpn
   
   # Get the status of the process using /proc fs
   def self.get_linux_status
-    file = Setting.get("PID_FILE")
-    unless File.exists?(file)
+    unless pid = Openvpn.pid
       OPENVPN_LOGGER.debug("OpenVPN: no PID file found")
       return false
     end
-    pid = File.read(file).chomp
     proc_file = "/proc/#{pid}/status"
     if File.exists?(proc_file)
       running = true 

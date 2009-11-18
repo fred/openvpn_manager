@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
   end
   
   def openvpn_status
-    @openvpn_running = Openvpn.status
+    Openvpn.status
   end
   
 end
