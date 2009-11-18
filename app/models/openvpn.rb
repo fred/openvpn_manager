@@ -20,14 +20,19 @@ class Openvpn
     sleep 2
     result
   end
-    
+  
+  # Returns the pid number of the process
+  # 
   def self.pid
-    return nil if pid = Setting.get("PIF_FILE")
-    File.read(file) if file.exists?(pid)
+    pid = Setting.get("PID_FILE")
+    if File.exists?(pid)
+      File.read(pid).chomp
+    else
+      nil
+    end
   end
   
-  
-  # Tdod: implemet methods for BSD, OSX and other OS.
+  # TODO: implemet methods for BSD, OSX and other OS.
   def self.status
     # For now only linux to start with
     if RUBY_PLATFORM.match(/linux/)
