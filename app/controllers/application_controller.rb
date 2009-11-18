@@ -23,8 +23,7 @@ class ApplicationController < ActionController::Base
   end
   
   def openvpn_status
-    # do restart command
-    @openvpn_running = InstalledClient.get_status
+    @openvpn_running = Openvpn.status
   end
   
 end

@@ -8,7 +8,7 @@
     <span class="action_label">Running</span>
   <% else %>
     <%= image_tag "icons/96/Ball-stop.png" %>
-    <span class="action_label">Shutdown</span>
+    <span class="action_label">Not Running</span>
   <% end %>
 </div>
 
@@ -17,15 +17,15 @@
 <h4>Actions:</h4>
 <div class="action">
   <%= link_to image_tag("icons/96/Button-shutdown.png"), stop_openvpn_path, :method => :put %>
-  <span class="action_label">Stop</span>
+  <%= link_to "Stop", stop_openvpn_path, :method => :put, :class=>"action_label" %>
 </div>
 
 <div class="action">
   <%= link_to image_tag("icons/96/Button-go.png"), start_openvpn_path %>
-  <span class="action_label">Start</span>
+  <%= link_to "Start", start_openvpn_path, :method => :put, :class=>"action_label" %>
 </div>
 
 <div class="action">
   <%= link_to image_tag("icons/96/Button-reboot.png"), restart_openvpn_path %>
-  <span class="action_label">Restart</span>
+  <%= link_to "Restart", restart_openvpn_path, :method => :put, :class=>"action_label" %>
 </div>
