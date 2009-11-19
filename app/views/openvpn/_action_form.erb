@@ -1,0 +1,6 @@
+<% form_remote_tag(:url => {:action => "step#{step}", :step => step}, :html => {:id => "step#{step}"}) do %>
+    <%= submit_tag 'Run' %>
+<% end %>
+<pre id="step<%=step%>_result">
+  
+</pre>

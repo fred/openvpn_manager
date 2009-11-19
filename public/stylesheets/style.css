@@ -155,3 +155,14 @@ text-decoration: underline;
 .openvpn_status .red {
   color: red;
 }
+
+.result_true {
+  padding: 4px;
+  color: green;
+  font-weight: bold;
+}
+.result_false {
+  padding: 4px;
+  color: red;
+  font-weight: bold;
+}

@@ -3,21 +3,21 @@ class Openvpn
   def self.start
     command = Setting.get("START_COMMAND")
     result = system(command)
-    sleep 2
+    sleep 3
     result
   end
 
   def self.stop
     command = Setting.get("STOP_COMMAND")
     result = system(command)
-    sleep 2
+    sleep 3
     result
   end
 
   def self.restart
     command = Setting.get("RESTART_COMMAND")
     result = system(command)
-    sleep 2
+    sleep 3
     result
   end
   

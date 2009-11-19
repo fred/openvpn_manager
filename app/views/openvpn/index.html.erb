@@ -22,10 +22,66 @@
 
 <div class="action">
   <%= link_to image_tag("icons/96/Button-go.png"), start_openvpn_path %>
-  <%= link_to "Start", start_openvpn_path, :method => :put, :class=>"action_label" %>
+  <%= link_to "Start", start_openvpn_path, :class=>"action_label" %>
 </div>
 
 <div class="action">
   <%= link_to image_tag("icons/96/Button-reboot.png"), restart_openvpn_path %>
-  <%= link_to "Restart", restart_openvpn_path, :method => :put, :class=>"action_label" %>
+  <%= link_to "Restart", restart_openvpn_path, :class=>"action_label" %>
 </div>
+
+
+<br clear="both"/>
+<br clear="both"/>
+<h3> Instructions to setup OpenVPN</h3>
+
+<p>1. Install openvpn </p>
+<pre>
+  gentoo: emerge openvpn
+  ubuntu: aptitude install openvpn
+  centos: yum install openvpn
+</pre>
+
+<br />
+<p> 2. <%= link_to "Check Variables", settings_path %> </p>
+<%= render :partial => "action_form", :locals => {:step => 2} %>
+
+<br />
+<p> 3. Copy easy-rsa folder to /etc/openvpn </p>
+<pre>
+  cp -a /usr/share/openvpn/easy-rsa/ /etc/openvpn/
+  cd /etc/openvpn/easy-rsa
+</pre>
+<%= render :partial => "action_form", :locals => {:step => 3} %>
+
+
+<br />
+<p> 4. Clean directories. *Notice: Perform this only on new installations. </p>
+<pre>
+  /etc/openvpn/easy-rsa/clean-all
+</pre>
+<%= render :partial => "action_form", :locals => {:step => 4} %>
+
+
+<br />
+<p> 5. Build the certificate authority (CA) certificate and key</p>
+<pre>
+  /etc/openvpn/easy-rsa/build-ca
+  <%= link_to "Run", :action => "step5" %>
+</pre>
+<%= render :partial => "action_form", :locals => {:step => 5} %>
+
+<br />
+<p> 6. Generate a certificate and private key for the server</p>
+<pre>
+  /etc/openvpn/easy-rsa/build-key-server server
+</pre>
+<%= render :partial => "action_form", :locals => {:step => 6} %>
+
+<br />
+<p> 7. Generate Diffie Hellman parameters</p>
+<pre>
+  /etc/openvpn/easy-rsa/build-dh
+</pre>
+<%= render :partial => "action_form", :locals => {:step => 7} %>
+

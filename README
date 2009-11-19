@@ -1,4 +1,4 @@
-=== OpenVPN Manager for Linux/Gentoo ===
+<h2> OpenVPN Manager for Linux/Gentoo </h2>
 
 This is an attempt to create an awesome open source openVPN Manager for Linux. 
 It is tested to run on Gentoo Linux, but actually should work on all Linux and OSX, just need to change the paths on the settings pane.
@@ -8,21 +8,21 @@ It's still very basic now. I will try to copy some functionality from the offici
 Anyone interested to join me is very welcome. 
 
 
-=== About Application ====
+<h2> About Application </h2>
 
 Right now at this early stage, the application is in safe-mode. 
 Which means that it will make no changes to you current openvpn configuration and files. It will only read and display. So it's safe to try out and experiment. 
 
 There are two modes of operation. 
 
-1. Using the database:
+<h3>1. Using the database: </h3>
 
 - Using the database to store the user keys. 
 - you can store more data about the client, such as email, user login, and other stuff.
 - if you use other scripts to generate the keys, they will not show up in the application. 
   You will need to migrate them to the database.
 
-2. Using the filesystem:
+<h3>2. Using the filesystem:</h3>
 
 - experimental, not well tested.
 - The keys are store and read by the filesystem each query.
@@ -31,14 +31,14 @@ There are two modes of operation.
 
 
 
-=== Requirements: ===
+<h2> Requirements: </h2>
 
 - rails, mysql/sqlite
 - OpenVPN
 - You need to know where is the 'easyrsa' folder (included in openvpn)
 - you need to load the 'vars' variables into the settings of the application.
 
-=== Gems I use, or will use ===
+<h2> Gems </h2>
 
 - formtastic
 - houghtbot-clearance
@@ -47,7 +47,7 @@ There are two modes of operation.
 - cucumber 
 
 
-=== Installation ===
+<h2> Installation </h2>
 
 1. setup database.yml
 2. sudo rake gems:install
