@@ -42,15 +42,16 @@
   centos: yum install openvpn
 </pre>
 <p>Check for Kernel Support: </p>
-<%= render :partial => "action_form", :locals => {:step => 2} %>
+<%= render :partial => "action_form", :locals => {:step => 1} %>
 
 <br />
 <p> 2. <%= link_to "Check Variables", settings_path %> </p>
 <%= render :partial => "action_form", :locals => {:step => 2} %>
 
 <br />
-<p> 3. Copy easy-rsa folder to /etc/openvpn </p>
+<p> 3. Copy easy-rsa folder to /etc/openvpn and create log folder</p>
 <pre>
+  mkdir /var/log/openvpn/
   cp -a /usr/share/openvpn/easy-rsa/ /etc/openvpn/
   cd <%= @easy_rsa %>
 </pre>
@@ -94,3 +95,11 @@
   we will create backup of original file.
 </pre>
 <%= render :partial => "action_form", :locals => {:step => 8} %>
+
+<br />
+<p> 8. Create Log folder. </p>
+<pre>
+  mkdir -p <%= @log_folder %>
+</pre>
+<%= render :partial => "action_form", :locals => {:step => 9} %>
+

@@ -2,6 +2,7 @@ class OpenvpnController < ApplicationController
   
   def index
     @easy_rsa = Setting.get("EASY_RSA")
+    @log_folder = Setting.get("LOG_FILE").gsub("openvpn.log", "")
   end
   
   def stop
@@ -36,11 +37,11 @@ class OpenvpnController < ApplicationController
   
   # Will check if system has tun/tap module or kernel support
   def step1
-    command1 = "modprobe tun"
-    command2 = "find /dev/ -name 'tun'"
-    system(command1)
-    @result = system(command2)
-    error = "Your Kernel has no support for the TUN driver, you need to build a module or install it."
+    command = "modprobe tun"
+    system(command)
+    command_tun = "find /dev/ -name 'tun'"
+    @result = system(command_tun)
+    error = "#{$?}, Your Kernel has no support for the TUN driver, you need to build a module or install it."
     msg = "your kernel has TUN support. :)"
     update_result(@result,error,msg)
   end
@@ -107,15 +108,21 @@ class OpenvpnController < ApplicationController
     update_result(@result,error,msg)
   end
   
+  def step9
+    @result = system("mkdir -p #{@log_folder}")
+    error = "#{$?} You may have no permissions. Check is this process is running as root."
+    update_result(@result,error)
+  end
+  
   def update_result(result,error=nil,msg=nil)
     num = params[:step]
     @result = result
     render :update do |page|
       if result == true
         page.hide  "step#{num}"
-        page.replace_html "step#{num}_result", "<span class=result_#{@result}> Success. #{msg}</span>"
+        page.insert_html :bottom, "step#{num}_result", "<span class=result_#{@result}> Success. #{msg}</span><br />"
       else
-        page.replace_html "step#{num}_result", "<span class=result_#{@result}> Error #{error}.</span>"
+        page.insert_html :bottom, "step#{num}_result", "<span class=result_#{@result}> Error #{error}.</span><br />"
       end
       page.visual_effect :highlight, "step#{num}_result"
     end
