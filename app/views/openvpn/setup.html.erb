@@ -1,0 +1,70 @@
+<h3> Instructions to setup OpenVPN</h3>
+
+<p>1. Install openvpn </p>
+<pre>
+  gentoo: emerge openvpn
+  ubuntu: aptitude install openvpn
+  centos: yum install openvpn
+</pre>
+<p>Check for Kernel Support: </p>
+<%= render :partial => "action_form", :locals => {:step => 1} %>
+
+<br />
+<p> 2. <%= link_to "Check Variables", settings_path %> </p>
+<%= render :partial => "action_form", :locals => {:step => 2} %>
+
+<br />
+<p> 3. Copy easy-rsa folder to /etc/openvpn and create log folder</p>
+<pre>
+  mkdir /var/log/openvpn/
+  cp -a /usr/share/openvpn/easy-rsa/ /etc/openvpn/
+  cd <%= @easy_rsa %>
+</pre>
+<%= render :partial => "action_form", :locals => {:step => 3} %>
+
+
+<br />
+<p> 4. Clean directories. *Notice: Perform this only on new installations. </p>
+<pre>
+  <%= @easy_rsa %>/clean-all
+</pre>
+<%= render :partial => "action_form", :locals => {:step => 4} %>
+
+
+<br />
+<p> 5. Build the certificate authority (CA) certificate and key</p>
+<pre>
+  <%= @easy_rsa %>/build-ca
+</pre>
+<%= render :partial => "action_form", :locals => {:step => 5} %>
+
+<br />
+<p> 6. Generate a certificate and private key for the server</p>
+<pre>
+  <%= @easy_rsa %>/build-key-server server
+</pre>
+<%= render :partial => "action_form", :locals => {:step => 6} %>
+
+<br />
+<p> 7. Generate Diffie Hellman parameters. This is going to take a long time</p>
+<pre>
+  <%= @easy_rsa %>/build-dh
+</pre>
+<%= render :partial => "action_form", :locals => {:step => 7} %>
+
+
+<br />
+<p> 8. Save Config File. </p>
+<pre>
+  Write all settigns to /etc/openvpn/openvpn.conf 
+  we will create backup of original file.
+</pre>
+<%= render :partial => "action_form", :locals => {:step => 8} %>
+
+<br />
+<p> 8. Create Log folder. </p>
+<pre>
+  mkdir -p <%= @log_folder %>
+</pre>
+<%= render :partial => "action_form", :locals => {:step => 9} %>
+

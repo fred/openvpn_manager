@@ -8,7 +8,6 @@
   <tr>
     <td>Name</td>
     <td>Value</td>
-    <td>VPN</td>
     <td> </td>
     <td> </td>
   </tr>
@@ -17,7 +16,6 @@
   <tr>
     <td><%= link_to setting.var, setting %> </td>
     <td><%= setting.value %> </td>
-    <td><%= boolean_to_word setting.vpn_only %> </td>
     <td><%= link_to 'Edit', edit_setting_path(setting) %></td>
     <td><%= link_to 'Del', setting, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>

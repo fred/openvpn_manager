@@ -29,7 +29,8 @@
         <% if current_user %>
           <li><%= link_to "Users", users_path %></li>
           <li><%= link_to "Clients", installed_clients_path %></li>
-          <li><%= link_to "OpenVPN", openvpn_index_path %></li>
+          <li><%= link_to "Status", openvpn_index_path %></li>
+          <li><%= link_to "Setup", setup_openvpn_path %></li>
           <li><%= link_to "Configuration", settings_path %></li>
           <li><%= link_to "logout", session_path, :method => "delete" %></li>
         <% else %>

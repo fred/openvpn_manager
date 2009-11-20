@@ -8,6 +8,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :clients, :collection => {:reload => [:any]}
   
   map.resources :openvpn, :collection => {
+    :setup => [:get],
     :restart => [:get],
     :start => [:get],
     :stop => [:put],
