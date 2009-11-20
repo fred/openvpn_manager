@@ -1,6 +1,7 @@
 class OpenvpnController < ApplicationController 
   
   def index
+    @easy_rsa = Setting.get("EASY_RSA")
   end
   
   def stop
@@ -39,7 +40,7 @@ class OpenvpnController < ApplicationController
   def step2
     Openvpn.set_env
     @result = Openvpn.check_env
-    error = "Check settings."
+    error = "Check your settings."
     update_result(@result,error)
   end
 
@@ -58,7 +59,9 @@ class OpenvpnController < ApplicationController
   end
 
   def step5
-    command = "/etc/openvpn/easy-rsa/build-ca"
+    Openvpn.set_env
+    easy_rsa = Setting.get("EASY_RSA")
+    command = "#{easy_rsa}/pkitool --initca"
     @result = system(command)
     error = $?
     update_result(@result,error)
@@ -66,26 +69,43 @@ class OpenvpnController < ApplicationController
   end
 
   def step6
-    command = "/etc/openvpn/easy-rsa/build-key-server server"
+    Openvpn.set_env
+    easy_rsa = Setting.get("EASY_RSA")
+    command = "#{easy_rsa}/pkitool --server"
     @result = system(command)
     error = $?
     update_result(@result,error)
   end
   
   def step7
-    command = "/etc/openvpn/easy-rsa/build-dh"
+    Openvpn.set_env
+    easy_rsa = Setting.get("EASY_RSA")
+    command = "#{easy_rsa}/build-dh"
     @result = system(command)
     error = $?
     update_result(@result,error)
   end
   
-  def update_result(result,error)
+  def step8
+    count = Openvpn.write_config_file
+    error = nil
+    if count.to_i > 0
+      @result = true
+      msg = "#{count} bytes written to file."
+    else
+      @result = false
+      error = "Error, could not write to file"
+    end
+    update_result(@result,error,msg)
+  end
+  
+  def update_result(result,error=nil,msg=nil)
     num = params[:step]
     @result = result
     render :update do |page|
       if result == true
         page.hide  "step#{num}"
-        page.replace_html "step#{num}_result", "<span class=result_#{@result}> Success.</span>"
+        page.replace_html "step#{num}_result", "<span class=result_#{@result}> Success. #{msg}</span>"
       else
         page.replace_html "step#{num}_result", "<span class=result_#{@result}> Error #{error}.</span>"
       end

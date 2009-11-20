@@ -50,7 +50,7 @@
 <p> 3. Copy easy-rsa folder to /etc/openvpn </p>
 <pre>
   cp -a /usr/share/openvpn/easy-rsa/ /etc/openvpn/
-  cd /etc/openvpn/easy-rsa
+  cd <%= @easy_rsa %>
 </pre>
 <%= render :partial => "action_form", :locals => {:step => 3} %>
 
@@ -58,7 +58,7 @@
 <br />
 <p> 4. Clean directories. *Notice: Perform this only on new installations. </p>
 <pre>
-  /etc/openvpn/easy-rsa/clean-all
+  <%= @easy_rsa %>/clean-all
 </pre>
 <%= render :partial => "action_form", :locals => {:step => 4} %>
 
@@ -66,22 +66,29 @@
 <br />
 <p> 5. Build the certificate authority (CA) certificate and key</p>
 <pre>
-  /etc/openvpn/easy-rsa/build-ca
-  <%= link_to "Run", :action => "step5" %>
+  <%= @easy_rsa %>/build-ca
 </pre>
 <%= render :partial => "action_form", :locals => {:step => 5} %>
 
 <br />
 <p> 6. Generate a certificate and private key for the server</p>
 <pre>
-  /etc/openvpn/easy-rsa/build-key-server server
+  <%= @easy_rsa %>/build-key-server server
 </pre>
 <%= render :partial => "action_form", :locals => {:step => 6} %>
 
 <br />
-<p> 7. Generate Diffie Hellman parameters</p>
+<p> 7. Generate Diffie Hellman parameters. This is going to take a long time</p>
 <pre>
-  /etc/openvpn/easy-rsa/build-dh
+  <%= @easy_rsa %>/build-dh
 </pre>
 <%= render :partial => "action_form", :locals => {:step => 7} %>
 
+
+<br />
+<p> 8. Save Config File. </p>
+<pre>
+  Write all settigns to /etc/openvpn/openvpn.conf 
+  we will create backup of original file.
+</pre>
+<%= render :partial => "action_form", :locals => {:step => 8} %>
