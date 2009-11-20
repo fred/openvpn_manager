@@ -210,12 +210,12 @@ Setting.create(
         Don't leave any of these fields blank."},
   
     { :var => "KEY_ORG", 
-      :value => "mathaba.net", 
+      :value => "vpn3.frederico-araujo.com", 
       :description => "These are the default values for fields which will be placed in the certificate. 
       Don't leave any of these fields blank."},
   
     { :var => "KEY_EMAIL", 
-      :value => "vpn@mathaba.net", 
+      :value => "vpn3@frederico-araujo.com", 
       :description => "These are the default values for fields which will be placed in the certificate. 
         Don't leave any of these fields blank."},
     

@@ -41,6 +41,8 @@
   ubuntu: aptitude install openvpn
   centos: yum install openvpn
 </pre>
+<p>Check for Kernel Support: </p>
+<%= render :partial => "action_form", :locals => {:step => 2} %>
 
 <br />
 <p> 2. <%= link_to "Check Variables", settings_path %> </p>

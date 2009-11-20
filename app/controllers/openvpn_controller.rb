@@ -34,7 +34,15 @@ class OpenvpnController < ApplicationController
     redirect_to :action => "index"
   end
   
+  # Will check if system has tun/tap module or kernel support
   def step1
+    command1 = "modprobe tun"
+    command2 = "find /dev/ -name 'tun'"
+    system(command1)
+    @result = system(command2)
+    error = "Your Kernel has no support for the TUN driver, you need to build a module or install it."
+    msg = "your kernel has TUN support. :)"
+    update_result(@result,error,msg)
   end
 
   def step2
@@ -71,7 +79,7 @@ class OpenvpnController < ApplicationController
   def step6
     Openvpn.set_env
     easy_rsa = Setting.get("EASY_RSA")
-    command = "#{easy_rsa}/pkitool --server"
+    command = "#{easy_rsa}/pkitool --server server"
     @result = system(command)
     error = $?
     update_result(@result,error)
