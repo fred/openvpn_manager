@@ -86,9 +86,9 @@ class InstalledClient
   
   def self.client_ips
     ipp_file = Setting.get("IPP_FILE")
-    return nil unless File.exists?(ipp_file)
+    ipt = []
+    return ips unless File.exists?(ipp_file)
     tmp = File.read(ipp_file).split("\n")
-    ips = []
     tmp.each do |t|
       a = t.split(",")
       ips << {:name => a[0], :ip => a[1]}
