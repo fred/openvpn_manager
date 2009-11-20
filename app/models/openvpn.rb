@@ -150,7 +150,7 @@ class Openvpn
     dev = Setting.get("interface_device")
     server_network = Setting.get("server_network")
     server_ip = Setting.get("server_ip")
-    keepalive = Setting.get("port")
+    keepalive = Setting.get("keepalive")
     ccd = Setting.get("ccd")
     redirect_gateway = Setting.get("redirect_gateway")=="1"
     cipher = Setting.get("cipher")

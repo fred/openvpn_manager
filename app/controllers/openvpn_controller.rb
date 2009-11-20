@@ -109,6 +109,7 @@ class OpenvpnController < ApplicationController
   end
   
   def step9
+    @log_folder = Setting.get("LOG_FILE").gsub("openvpn.log", "")
     @result = system("mkdir -p #{@log_folder}")
     error = "#{$?} You may have no permissions. Check is this process is running as root."
     update_result(@result,error)
