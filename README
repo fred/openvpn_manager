@@ -41,7 +41,7 @@ There are two modes of operation.
 <h2> Gems </h2>
 
 - formtastic
-- houghtbot-clearance
+- authlogic
 - thoughtbot-factory_girl
 - rspec
 - cucumber 
@@ -49,15 +49,17 @@ There are two modes of operation.
 
 <h2> Installation </h2>
 
-1. edit database.yml and db/seed.rb to satisfy your needs
+1. Edit database.yml
+2. Edit db/seed.rb
 2. sudo rake gems:install
+3. rake db:create
 3. rake db:migrate
 4. rake db:seed
 5. ruby ./script/server
 
 Then login as :
 
-email: "admin@localhost.com"
+email: "admin"
 password: "welcome"
 
-you can change in db/seed.rb
+you can change login info in db/seed.rb

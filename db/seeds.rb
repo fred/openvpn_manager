@@ -269,8 +269,15 @@ Setting.create(
 )
 
 User.create(:name => "admin", 
-  :email => "admin@localhost.com", 
+  :login => "admin",
+  :email => "admin@localhost.com",
   :password => "welcome", 
-  :password_confirmation => "welcome" 
+  :password_confirmation => "welcome",
+  :admin => true
 )
 
+user = User.find(:first)
+if user
+  user.admin = true
+  user.save
+end

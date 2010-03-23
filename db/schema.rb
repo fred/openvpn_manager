@@ -43,19 +43,33 @@ ActiveRecord::Schema.define(:version => 20091111191138) do
   add_index "settings", ["vpn_only"], :name => "index_settings_on_vpn_only"
 
   create_table "users", :force => true do |t|
+    t.string   "login",                                  :null => false
+    t.string   "email",                                  :null => false
+    t.string   "crypted_password",                       :null => false
+    t.string   "password_salt",                          :null => false
+    t.string   "persistence_token",                      :null => false
+    t.string   "single_access_token",                    :null => false
+    t.string   "perishable_token",                       :null => false
+    t.integer  "login_count",         :default => 0,     :null => false
+    t.integer  "failed_login_count",  :default => 0,     :null => false
+    t.datetime "last_request_at"
+    t.datetime "current_login_at"
+    t.datetime "last_login_at"
+    t.string   "current_login_ip"
+    t.string   "last_login_ip"
+    t.string   "address"
+    t.string   "phone"
     t.string   "name"
-    t.string   "email"
-    t.string   "encrypted_password", :limit => 128
-    t.string   "salt",               :limit => 128
-    t.string   "confirmation_token", :limit => 128
-    t.string   "remember_token",     :limit => 128
-    t.boolean  "email_confirmed",                   :default => false, :null => false
+    t.string   "time_zone"
+    t.text     "notes"
+    t.boolean  "admin",               :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"
-  add_index "users", ["id", "confirmation_token"], :name => "index_users_on_id_and_confirmation_token"
-  add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
+  add_index "users", ["last_request_at"], :name => "index_users_on_last_request_at"
+  add_index "users", ["login"], :name => "index_users_on_login"
+  add_index "users", ["persistence_token"], :name => "index_users_on_persistence_token"
 
 end

@@ -1,12 +1,17 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :settings
-
+  
+  map.root :controller => "user_sessions", :action => "new"
+  
+  map.resource :account, :controller => "users"
   map.resources :users
+  map.resource :user_session
   
+  map.login  "login",  :controller => "user_sessions", :action => "new"
+  map.logout "logout", :controller => "user_sessions", :action => "destroy"
+  
+  map.resources :settings
   map.resources :installed_clients, :collection => {:download => [:any]}
-  
   map.resources :clients, :collection => {:reload => [:any]}
-  
   map.resources :openvpn, :collection => {
     :setup => [:get],
     :restart => [:get],
