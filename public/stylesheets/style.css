@@ -31,10 +31,9 @@ h3 a:hover { color: #999; }
   height: 80px;
 }
 #header h1 {
-  font-size: 35px;
-  font-weight: 100;
-  letter-spacing: -3px;
-  padding: 30px 0 0 33px;
+  font-size: 32px;
+  font-weight: normal;
+  padding: 30px 0 0 30px;
   text-align: left;
 }
 #header h1 a {
