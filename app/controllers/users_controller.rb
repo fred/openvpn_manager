@@ -8,7 +8,11 @@ class UsersController < ApplicationController
   end
   
   def show
-    @user = User.find(params[:id])
+    if params[:id]
+      @user = User.find(params[:id]) 
+    else
+      @user = current_user
+    end
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @user }
@@ -72,7 +76,7 @@ class UsersController < ApplicationController
       redirect_to(users_path)
       flash[:notice] = "User created."
     else
-      flash[:error]  = "We couldn't that user, sorry."
+      flash[:error]  = "We couldn't create that user, sorry."
       render :action => 'new'
     end
   end

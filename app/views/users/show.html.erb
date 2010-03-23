@@ -1,0 +1,32 @@
+<h3> <% @title ||= "Users > #{@user.login}" %> </h3>
+
+<div id="columnarForm">
+
+    <fieldset>
+  		<legend>User Info</legend>
+  		<p>Login: <%= @user.login %></p>
+  		<p>Name: <%= @user.login %></p>
+  		<p>Email: <%= @user.email %></p>
+  		<p>Phone: <%= @user.phone %></p>
+  		<p>Address: <%= @user.address %></p>
+  		<p>Updated: <%= @user.updated_at.to_s(:short) %></p>
+  		<p>Created: <%= @user.created_at.to_s(:short) %></p>
+    </fieldset>
+
+    <fieldset>
+  		<legend>History</legend>
+  		<p>Logins: <%= @user.login_count %></p>
+      <p>Failed Logins: <%=@user.failed_login_count %></p>
+      <p>Current Login: <%= @user.current_login_at.to_s(:short) %></p>
+      <p>Current IP: <%= @user.current_login_ip %></p>
+      <p>Last Request: <%= @user.last_request_at.to_s(:short) %></p>
+      <p>Last Login: <%= @user.last_login_at %></p>
+      <p>Last IP: <%= @user.last_login_ip %></p>
+    </fieldset>
+    
+  <br clear="both"/>
+  <%= link_to "Edit", edit_user_path(@user) %>
+  <%= link_to "Back", users_path %>
+
+</div>
+<br clear="both"/>

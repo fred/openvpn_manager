@@ -2,7 +2,7 @@
 
 <table id="gradient-style">
   <tr>
-    <td>Name</td>
+    <td>Login</td>
     <td>Email</td>
     <td>Updated at</td>
     <td>Created at</td>
@@ -12,8 +12,8 @@
 
   <% @users.each do |user| %>
   <tr>
-    <td><%= user.name %></td>
-    <td><%= user.email %></td>
+    <td><%= link_to user.login, user %></td>
+    <td><%= link_to user.email, user %></td>
     <td><%= user.updated_at.to_s(:short) %></td>
     <td><%= user.updated_at.to_s(:short) %></td>
     <td><%= link_to 'Edit', edit_user_path(user) %></td>

@@ -2,20 +2,42 @@
   <legend>Required Fields</legend>
   <table>
     <tr>
-  	  <td><%= f.label :name, "Name" %> </td>
-      <td><%= f.text_field :name, :size => 24 %></td>
+  	  <td><%= f.label :name %> </td>
+      <td><%= f.text_field :name %></td>
     </tr>
     <tr>
-      <td><%= f.label :email, "Email" %></td>
-      <td><%= f.text_field :email, :size => 24 %></td>
+      <td><%= f.label :email %></td>
+      <td><%= f.text_field :email %></td>
     </tr>
     <tr>
-      <td><%= f.label :password, "Password" %></td>
-      <td><%= f.text_field :password, :size => 24 %></td>
+      <td><%= f.label :password %></td>
+      <td><%= f.text_field :password %></td>
     </tr>
     <tr>
-      <td><%= f.label :password_confirmation, "Password Confirmation" %></td>
-      <td><%= f.text_field :password_confirmation, :size => 24 %></td>
+      <td><%= f.label :password_confirmation %></td>
+      <td><%= f.text_field :password_confirmation %></td>
+    </tr>
+    </table>
+</fieldset>
+
+<fieldset>
+  <legend>Others</legend>
+  <table>
+    <tr>
+      <td><%= f.label :name %></td>
+      <td><%= f.text_field :name %></td>
+    </tr>
+    <tr>
+  	  <td><%= f.label :phone %> </td>
+      <td><%= f.text_field :phone %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :address %></td>
+      <td><%= f.text_field :address %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :notes %></td>
+      <td><%= f.text_area :notes, :rows => 5, :cols => 28 %></td>
     </tr>
     </table>
 </fieldset>
